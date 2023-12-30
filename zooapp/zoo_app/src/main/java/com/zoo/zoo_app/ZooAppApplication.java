@@ -11,8 +11,12 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.GetMapping;
 
+
+import com.zoo.zoo_app.dao.HabitatDao;
 import com.zoo.zoo_app.dao.AnimalDao;
 import com.zoo.zoo_app.service.AnimalService;
+import com.zoo.zoo_app.service.HabitatService;
+
 @SpringBootApplication
 
 
@@ -35,8 +39,17 @@ private AnimalDao animalDao;
     }
     @GetMapping("/api/animals/female")
     public List<Map<String, Object>> getFemaleAnimals() {
-        return animalDao.readMaleAnimalfromDB();
+        return animalDao.readFemaleAnimalfromDB();
     }
+    
+
+        @Autowired
+        private HabitatDao habitatDao; // Declare an instance of HabitatDao
+
+        @GetMapping("/api/habitats")
+        public List<Map<String, Object>> getHabitats() {
+            return habitatDao.getHabitats();
+        }
 
         @Bean
         public CommandLineRunner commandLineRunnerMale(ApplicationContext ctx) {
@@ -45,6 +58,7 @@ private AnimalDao animalDao;
                 animalService.fetchMaleanimal();
             };
         }
+    
 
         @Bean
         public CommandLineRunner commandLineRunnerFemale(ApplicationContext ctx) {
@@ -52,5 +66,21 @@ private AnimalDao animalDao;
                 AnimalService animalService = ctx.getBean(AnimalService.class);
                 animalService.fetchFemaleanimal();
             };
+        }
+        @Bean
+        public CommandLineRunner commandLineRunnerInsertHabitat(ApplicationContext ctx) {
+            return args -> {
+                HabitatService habitatService = ctx.getBean(HabitatService.class);
+                habitatService.insertHabitat();
+            };
         } 
+        @Bean
+        public CommandLineRunner commandLineRunnerHabitat(ApplicationContext ctx) {
+            return args -> {
+                HabitatService habitatservice = ctx.getBean(HabitatService.class);
+                 habitatservice.fetchHabitat();
+            };
+        }
+
     }
+
