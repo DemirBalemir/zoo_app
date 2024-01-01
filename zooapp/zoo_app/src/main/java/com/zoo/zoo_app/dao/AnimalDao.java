@@ -22,5 +22,15 @@ public class AnimalDao {
       
 
     }
+
+    
+    public List<Map<String, Object>> getAnimalStats() {
+      String sql = "SELECT animal.HabitatID, COUNT(*) as AnimalCount, AVG(animal.is_sick) as AverageSicknessRate " +
+                   "FROM animal " +
+                   "JOIN nutrition ON animal.NutritionID = nutrition.NutritionID " +
+                   "JOIN nutrition_supplier ON animal.SupplierID = nutrition_supplier.SupplierID " +
+                   "GROUP BY animal.HabitatID";
+      return jdbcTemplate.queryForList(sql);
+  }
 }
     

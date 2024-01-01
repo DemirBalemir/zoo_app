@@ -1,0 +1,19 @@
+#habitat-container table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#habitat-container th, #habitat-container td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+#habitat-container th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+#habitat-container tr:nth-child(even) {
+    background-color: #f2f2f2;
+}

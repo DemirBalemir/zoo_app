@@ -32,4 +32,6 @@ $(document).ready(function() {
         })
         .catch(error => console.error('Error:', error));
     });
+
+   
 });

@@ -22,4 +22,9 @@ public class AnimalController {
     public List<Map<String, Object>> getFemaleAnimals() {
         return animalDao.readFemaleAnimalfromDB();
     }
+
+    @GetMapping("/api/animals/stats")
+    public List<Map<String, Object>> getAnimalStats() {
+        return animalDao.getAnimalStats();
+    }
 }
