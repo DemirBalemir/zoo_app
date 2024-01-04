@@ -47,6 +47,12 @@ public class ZooAppApplication {
     public String habitatView() {
         return "habitatview";
     }
+    @GetMapping("/tigerandlion.html")
+    public String tigerandlionView() {
+        return "tigerandlionview";
+    }
+    
+
 
 
 
@@ -102,6 +108,11 @@ private NutritionDao nutritionDao;
 @GetMapping("/api/nutrition")
 public List<Map<String, Object>> getNutritionData() {
     return nutritionDao.getNutritionData();
+}
+
+@GetMapping("/api/tigerandlion")
+public String getTigerAndLionView() {
+    return "tigerandlion";
 }
 
     }

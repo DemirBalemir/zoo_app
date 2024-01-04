@@ -24,4 +24,8 @@ public class AnimalService {
     public List<Map<String, Object>> getAnimalStats() {
     return animalDao.getAnimalStats();
 }
+public List<Map<String, Object>> fetchTigerAndLionData() {
+    return animalDao.getTigerandLionData();
+}
+
 }

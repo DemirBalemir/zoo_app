@@ -27,4 +27,8 @@ public class AnimalController {
     public List<Map<String, Object>> getAnimalStats() {
         return animalDao.getAnimalStats();
     }
+    @GetMapping("/api/tigerandlion")
+public List<Map<String, Object>> getTigerAndLionData() {
+    return animalDao.getTigerandLionData();
+}
 }
