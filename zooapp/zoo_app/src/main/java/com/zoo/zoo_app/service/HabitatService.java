@@ -1,8 +1,8 @@
 package com.zoo.zoo_app.service;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import com.zoo.zoo_app.dao.HabitatDao;
+import com.zoo.zoo_app.model.Habitat;
 
 @Service
 public class HabitatService {
@@ -12,7 +12,8 @@ public class HabitatService {
     public void fetchHabitat() {
         habitatDao.getHabitats();
     }
-    public int insertHabitat() {
-        return habitatDao.insertHabitat();
+    public int insertHabitat(Habitat habitat) {
+        return habitatDao.insertHabitat(habitat);
     }
+
 }
