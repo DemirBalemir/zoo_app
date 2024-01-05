@@ -54,8 +54,15 @@ public class AnimalDao {
                 ") " +
                 "ORDER BY a.Animal_Birthdate DESC";
    return jdbcTemplate.queryForList(sql);
-    
-
+   
+}
+public List<Map<String, Object>> getCaretakerAnimalStats() {
+   String sql = "SELECT a.CaretakerID, COUNT(*) AS TotalAnimals, MAX(a.Animal_Birthdate) AS MaxBirthdate, SUM(a.is_sick) AS TotalSickAnimals " +
+                "FROM animal a " +
+                "WHERE a.Animal_Birthdate < '2023-01-01' AND a.is_sick = 0 " +
+                "GROUP BY a.CaretakerID " +
+                "HAVING COUNT(*) > 0";
+   return jdbcTemplate.queryForList(sql);
 }
 }
     

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.zoo.zoo_app.dao.HabitatDao;
 import com.zoo.zoo_app.model.Habitat;
+import com.zoo.zoo_app.model.Visitor;
 
 import java.util.List;
 import java.util.Map;
@@ -18,6 +19,7 @@ import java.util.Map;
 public class HabitatController {
     @Autowired
     private HabitatDao habitatDao;
+
 @PostMapping("/api/habitats/insert")
 public int insertHabitat(@RequestBody Habitat habitat) {
     return habitatDao.insertHabitat(habitat);
@@ -32,5 +34,12 @@ public int deleteHabitat(@PathVariable int HabitatID) {
         return habitatDao.getHabitats();
     }
 
-    
+    @GetMapping("/api/visitorHabitatCapacityView")
+public List<Map<String, Object>> getVisitorHabitatCapacityView() {
+    return habitatDao.getVisitorHabitatCapacityView();
+}
+@GetMapping("/api/specialCapacity")
+public List<Visitor> getSpecialCapacityView() {
+    return habitatDao.getSpecialCapacityView();
+}
 }

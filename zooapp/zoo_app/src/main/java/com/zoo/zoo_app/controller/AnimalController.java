@@ -32,4 +32,10 @@ public class AnimalController {
 public List<Map<String, Object>> getTigerAndLionData() {
     return animalDao.getTigerandLionData();
 }
+
+@GetMapping("/api/caretakerAnimalStats")
+public List<Map<String, Object>> getCaretakerAnimalStats() {
+    return animalDao.getCaretakerAnimalStats();
+}
+
 }
