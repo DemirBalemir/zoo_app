@@ -11,6 +11,7 @@ import java.util.Map;
 @RestController
 public class AnimalController {
 
+   
     @Autowired
     private AnimalDao animalDao;
 
@@ -22,4 +23,13 @@ public class AnimalController {
     public List<Map<String, Object>> getFemaleAnimals() {
         return animalDao.readFemaleAnimalfromDB();
     }
+
+    @GetMapping("/api/animals/stats")
+    public List<Map<String, Object>> getAnimalStats() {
+        return animalDao.getAnimalStats();
+    }
+    @GetMapping("/api/tigerandlion")
+public List<Map<String, Object>> getTigerAndLionData() {
+    return animalDao.getTigerandLionData();
+}
 }

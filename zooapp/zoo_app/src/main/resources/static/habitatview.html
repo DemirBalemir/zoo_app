@@ -2,12 +2,27 @@
 <html>
 <head>
     <title>Zoo View</title>
-    <link rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="style.css">
     <!-- Include jQuery from a CDN -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-    <button id="button1">Load Habitats</button>
+    <h2>Insert Habitat</h2>
+    <form id="habitat-form">
+        <input type="text" id="delete-HabitatID" placeholder="Enter HabitatID to delete">
+        <button id="delete-button">Delete</button>
+        <br>
+        <label for="HabitatID">Habitat ID:</label><br>
+        <input type="text" id="HabitatID" name="HabitatID"><br>
+        <label for="Capacity">Capacity:</label><br>
+        <input type="text" id="Capacity" name="Capacity"><br>
+        <label for="Habitat_Type">Habitat Type:</label><br>
+        <input type="text" id="Habitat_Type" name="Habitat_Type"><br>
+        <button type="button" id="insert-button">Insert Habitat</button>
+    </form>
+
+    <h2>View Habitats</h2>
+    <button id="view-button">Load Habitats</button>
     <div id="habitat-container"></div>
 
     <!-- Include your own JavaScript file -->

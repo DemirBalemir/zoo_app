@@ -2,7 +2,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f0f0f0;
+    background-color:#F9F9F9;
 }
 
 #animal-container {
@@ -20,7 +20,7 @@ body {
 }
 
 #button1, #button2 {
-    background-color: #007BFF;
+    background-color: #4C2FA3;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -34,7 +34,7 @@ body {
 }
 
 #button1:hover, #button2:hover {
-    background-color: #0056b3;
+    background-color: #4C2FA3;
 }
 table {
     width: 100%;
@@ -51,10 +51,34 @@ th, td {
 }
 
 th {
-    background-color: #007BFF;
+    background-color: #4C2FA3;
     color: white;
 }
 
 tr:nth-child(even) {
     background-color: #f2f2f2;
+}
+#insert-button, #delete-button, #view-button {
+    background-color: #4C2FA3;
+    box-shadow: 0 5px 0 #4C2FA3;
+    border: 2px solid #1d2026;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 10px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 150px;
+    transition: all 0.3s ease;
+}
+
+#insert-button:active, #delete-button:active, #view-button:active {
+    box-shadow: none;
+    transform: translateY(5px);
+}
+
+#insert-button:hover, #delete-button:hover, #view-button:hover {
+    background-color: #4C2FA3;
 }
