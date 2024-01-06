@@ -15,5 +15,14 @@ public class HabitatService {
     public int insertHabitat(Habitat habitat) {
         return habitatDao.insertHabitat(habitat);
     }
+    public void addHumidityLevelColumn() {
+        habitatDao.addHumidityLevelColumn();
+    }
+    public void updateHumidityLevel() {
+        habitatDao.updateHumidityLevel();
+    }
+    public void dropHumidityLevelColumn() {
+        habitatDao.dropHumidityLevelColumn();
+    }
 
 }

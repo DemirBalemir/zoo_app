@@ -33,6 +33,8 @@ public class ZooAppApplication {
     public String zooview() {
     return "zooview";
 }
+
+
 @Autowired
 private AnimalDao animalDao;
 
@@ -44,7 +46,8 @@ private AnimalDao animalDao;
     public List<Map<String, Object>> getFemaleAnimals() {
         return animalDao.readFemaleAnimalfromDB();
     }
-    
+
+  
 
         @Autowired
         private HabitatDao habitatDao; // Declare an instance of HabitatDao
@@ -53,11 +56,13 @@ private AnimalDao animalDao;
         public List<Map<String, Object>> getHabitats() {
             return habitatDao.getHabitats();
         }
+        
         @PostMapping("/api/habitats/insert")
     public ResponseEntity<String> insertHabitat(@RequestBody Habitat habitat) {
     
         return ResponseEntity.ok("Habitat inserted successfully");
     }
+
 
         @Bean
         public CommandLineRunner commandLineRunnerMale(ApplicationContext ctx) {
@@ -75,6 +80,7 @@ private AnimalDao animalDao;
                 animalService.fetchFemaleanimal();
             };
         }
+        
 
         @Bean
         public CommandLineRunner commandLineRunnerFetchHabitat(ApplicationContext ctx) {
@@ -95,6 +101,8 @@ private AnimalDao animalDao;
         public String getTigerAndLionView() {
             return "tigerandlion";
         }
+        
+
 
     }
 

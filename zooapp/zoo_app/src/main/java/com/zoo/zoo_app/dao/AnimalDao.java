@@ -7,18 +7,41 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 import java.util.Map;
 
+
 @Repository
 public class AnimalDao {
     @Autowired
     private JdbcTemplate jdbcTemplate;
     public List<Map<String, Object>> readMaleAnimalfromDB() {
-       return this.jdbcTemplate.queryForList("select * from animal where Animal_Gender='Male'");
+       return this.jdbcTemplate.queryForList("SELECT DISTINCT AnimalID, " +
+       "CONCAT('Caretaker: ', CaretakerID, ', ', 'Supplier: ', SupplierID) AS Caretaker_Supplier_Info, " +
+       "Animal_name, " +
+       "Animal_Birthdate, " +
+       "Animal_Gender, " +
+       "Animal_Specie " +
+       "FROM animal " +
+       "WHERE is_sick = 1 " +
+       "AND (NutritionID IN (1, 2, 3) OR NutritionID IS NULL) " +
+       "AND Animal_Specie LIKE 'G%' " +
+       "AND Animal_name IS NOT NULL " +
+       "AND LENGTH(Animal_name) > 3;"
+);
       
 
     }
     @Autowired
     public List<Map<String, Object>> readFemaleAnimalfromDB() {
-       return this.jdbcTemplate.queryForList("select * from animal where Animal_Gender='Female'");
+       return this.jdbcTemplate.queryForList("SELECT AnimalID, " +
+       "CONCAT('Caretaker: ', CaretakerID, ', ', 'Supplier: ', SupplierID) AS Caretaker_Supplier_Info, " +
+       "Animal_name " +
+       "FROM animal " +
+       "WHERE is_sick = 1 " +
+       "AND NutritionID IN (SELECT DISTINCT NutritionID FROM animal WHERE Animal_Gender = 'Male') " +
+       "AND Animal_Specie LIKE 'G%' " +
+       "AND Animal_name IS NOT NULL " +
+       "AND LENGTH(Animal_name) > 3 " +
+       "AND AnimalID = SOME (SELECT AnimalID FROM animal WHERE is_sick = 1) " +
+       "AND AnimalID = ALL (SELECT AnimalID FROM animal WHERE Animal_Specie LIKE 'A%');");
       
 
     }
@@ -64,5 +87,12 @@ public List<Map<String, Object>> getCaretakerAnimalStats() {
                 "HAVING COUNT(*) > 0";
    return jdbcTemplate.queryForList(sql);
 }
+
+
+
+
+
+
+
 }
     

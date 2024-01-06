@@ -4,10 +4,10 @@ $(document).ready(function() {
         .then(response => response.json())
         .then(data => {
             console.log(data);
-            let html = '<table><tr><th>ID</th><th>Name</th><th>Specie</th><th>Birthdate</th><th>Is Sick</th><th>Gender</th></tr>';
+            let html = '<table><tr><th>ID</th><th>Caretaker_Supplier_Info</th><th>Animal_name</th><th>>Animal_Birthdate</th><th>Animal_Gender</th><th>Animal_Specie</th></tr>';
             for (let animal of data) {
-                html += `<tr><td>${animal.AnimalID}</td><td>${animal.Animal_name}</td><td>${animal.Animal_Specie}</td><td>${animal.Animal_Birthdate}</td><td>${animal.is_sick}</td><td>${animal.Animal_Gender}</td></tr>`;
-            }
+                html += `<tr><td>${animal.AnimalID}</td><td>${animal.Caretaker_Supplier_Info}</td><td>${animal.Animal_name}</td><td>${animal.Animal_Birthdate}</td><td>${animal.Animal_Gender}</td><td>${animal.Animal_Specie}</td></tr>`;
+            } 
             html += '</table>';
 
             // Insert the HTML into the page
@@ -21,9 +21,9 @@ $(document).ready(function() {
         .then(response => response.json())
         .then(data => {
             // Create a string of HTML to display the data
-            let html = '<table><tr><th>ID</th><th>Name</th><th>Specie</th><th>Birthdate</th><th>Is Sick</th><th>Gender</th></tr>';
+            let html = '<table><tr><th>ID</th><th>Caretaker_Supplier_Info</th><th>.Animal_name</th></tr>';
             for (let animal of data) {
-                html += `<tr><td>${animal.AnimalID}</td><td>${animal.Animal_name}</td><td>${animal.Animal_Specie}</td><td>${animal.Animal_Birthdate}</td><td>${animal.is_sick}</td><td>${animal.Animal_Gender}</td></tr>`;
+                html += `<tr><td>${animal.AnimalID}</td><td>${animal.Caretaker_Supplier_Info}</td><td>${animal.Animal_name}</td></tr>`;
             }
             html += '</table>';
 
@@ -33,3 +33,4 @@ $(document).ready(function() {
         .catch(error => console.error('Error:', error));
     });
 });
+

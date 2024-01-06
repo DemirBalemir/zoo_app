@@ -4,6 +4,7 @@ package com.zoo.zoo_app.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -42,4 +43,19 @@ public List<Map<String, Object>> getVisitorHabitatCapacityView() {
 public List<Visitor> getSpecialCapacityView() {
     return habitatDao.getSpecialCapacityView();
 }
+@GetMapping("/api/habitats/addHumidityLevelColumn")
+public void addHumidityLevelColumn() {
+    habitatDao.addHumidityLevelColumn();
+    
+}
+@DeleteMapping("/api/habitats/dropHumidityLevelColumn")
+public void dropHumidityLevelColumn() {
+    habitatDao.dropHumidityLevelColumn();
+}
+@PatchMapping("/api/habitats/updateHumidityLevel")
+public void updateHumidityLevel() {
+    habitatDao.updateHumidityLevel();
+}
+
+
 }
