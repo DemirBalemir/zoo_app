@@ -51,5 +51,37 @@ public class HabitatDao {
             return visitor;
         });
     }
+    public void addHumidityLevelColumn() {
+        String sql = "ALTER TABLE habitat ADD COLUMN humidity_level INT;";
+                
+        try {
+            jdbcTemplate.execute(sql);
+            System.out.println("Column humidity_level added successfully.");
+        } catch (Exception e) {
+            System.out.println("Failed to add column: " + e.getMessage());
+        }
+    }
+    public void dropHumidityLevelColumn() {
+        String sql = "ALTER TABLE habitat DROP COLUMN humidity_level;";
+                
+        try {
+            jdbcTemplate.execute(sql);
+            System.out.println("Column humidity_level dropped successfully.");
+        } catch (Exception e) {
+            System.out.println("Failed to drop column: " + e.getMessage());
+        }
+    }
+    public void updateHumidityLevel() {
+        String sql = "UPDATE habitat SET humidity_level = 90 WHERE Habitat_Type = 'Desert' AND humidity_level IS NULL;";
+
+        try {
+            jdbcTemplate.update(sql);
+            System.out.println("Humidity level updated successfully.");
+        } catch (Exception e) {
+            System.out.println("Failed to update humidity level: " + e.getMessage());
+        }
+    }
+    
+    
     
 }

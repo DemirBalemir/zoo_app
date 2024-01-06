@@ -27,4 +27,6 @@ public class AnimalService {
 public List<Map<String, Object>> fetchTigerAndLionData() {
     return animalDao.getTigerandLionData();
 }
+
+
 }

@@ -40,6 +40,7 @@ $('#insert-button').click(function() {
     });
 });
 
+
 // Handle the 'View' button
 $('#view-button').click(function() {
     $.ajax({
@@ -48,9 +49,18 @@ $('#view-button').click(function() {
         dataType: "json",
         success: function(data) {
             console.log(data);
-            let html = '<table><tr><th>Habitat ID</th><th>Capacity</th><th>Habitat Type</th></tr>';
+            let html = '<table><tr><th>Habitat ID</th><th>Capacity</th><th>Habitat Type</th>';
+            // Check if 'humidity_level' exists in the first habitat object
+            if (data.length > 0 && 'humidity_level' in data[0]) {
+                html += '<th>Humidity Level</th>'; // Add 'Humidity Level' header
+            }
+            html += '</tr>';
             for (let habitat of data) {
-                html += `<tr><td>${habitat.HabitatID}</td><td>${habitat.Capacity}</td><td>${habitat.Habitat_Type}</td></tr>`;
+                html += `<tr><td>${habitat.HabitatID}</td><td>${habitat.Capacity}</td><td>${habitat.Habitat_Type}</td>`;
+                if ('humidity_level' in habitat) {
+                    html += `<td>${habitat.humidity_level}</td>`; // Add 'humidity_level' data
+                }
+                html += '</tr>';
             }
             html += '</table>';
 
@@ -60,5 +70,49 @@ $('#view-button').click(function() {
         error: function(error) {
             console.error('Error:', error);
         }
+    });
+});
+$(document).ready(function() {
+    $('#add-humidity-button').click(function() {
+        $.ajax({
+            url: '/api/habitats/addHumidityLevelColumn',
+            type: 'GET',
+            success: function(response) {
+                console.log('Humidity level column added successfully');
+            },
+            error: function(error) {
+                console.error('Error:', error);
+            }
+        });
+    });
+});
+$(document).ready(function() {
+    // ...
+
+    $('#update-humidity-button').click(function() {
+        $.ajax({
+            url: '/api/habitats/updateHumidityLevel',
+            type: 'PATCH',
+            success: function(response) {
+                console.log('Humidity level updated successfully');
+            },
+            error: function(error) {
+                console.error('Error:', error);
+            }
+        });
+    });
+});
+$(document).ready(function() {
+    $('#drop-humidity-button').click(function() {
+        $.ajax({
+            url: '/api/habitats/dropHumidityLevelColumn',
+            type: 'DELETE',
+            success: function(response) {
+                console.log('Humidity level column deleted successfully');
+            },
+            error: function(error) {
+                console.error('Error:', error);
+            }
+        });
     });
 });
